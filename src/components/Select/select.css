@@ -1,0 +1,8 @@
+.select-container {
+  display: inline-block;
+}
+
+.select-label, .select-input {
+  margin-right: 10px;
+}
+
