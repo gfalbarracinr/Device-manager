@@ -28,19 +28,23 @@ describe('Menu testing', () => {
   test('Filter change is changing the state', () => {
       menuWithContext();
       const filterElement = screen.getByLabelText(/Filter By/i);
-      fireEvent.change(filterElement, {value: 'MAC'});
+      fireEvent.change(filterElement, { target: {value: 'MAC'}});
 
-      const filterstate = screen.getByText(/MAC/i);
+      const filterstate = screen.getByTestId('filter-test');
       expect(filterstate).toBeInTheDocument();
+      expect(filterstate.innerHTML).toBe('MAC');
   });
 
   test('Sort change is changing the state', () => {
     menuWithContext();
     const sortElement = screen.getByLabelText(/Sort By/i);
-    fireEvent.change(sortElement, {value: 'HDD_CAPACITY'});
+    fireEvent.change(sortElement, {target: {value: 'HDD_CAPACITY'}});
 
-    const sortState = screen.getByText(/HDD_CAPACITY/i);
+    const sortState = screen.getByTestId('sort-test');
     expect(sortState).toBeInTheDocument();
+    console.log(sortState)
+    expect(sortState.innerHTML).toBe('HDD_CAPACITY');
 });
+
 })
 

@@ -22,7 +22,7 @@ export const OptionSelection = ({options, actionType, label, id}: OptionSelectio
         <option value='ALL'>ALL</option>
         {
           Object.values(options).map((type) => (
-            <option key={type} value={type}>{type.toUpperCase()}</option>
+            <option key={type} value={type.toUpperCase()}>{type.toUpperCase()}</option>
           ))
         }
       </select>

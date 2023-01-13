@@ -5,8 +5,8 @@ export const MenuTestingHelper = ({children}: PropsWithChildren) => {
   const {state} = useDevice();
   return (
     <div>
-      <p>{state.filter}</p>
-      <p>{state.sort}</p>
+      <p data-testid="filter-test">{state.filter}</p>
+      <p data-testid="sort-test">{state.sort}</p>
       {children}  
     </div>
   )

@@ -10,7 +10,7 @@ export const Menu = () => {
         actionType={ActionTypes.CHANGE_FILTER} 
         options={DeviceType} 
         id='filter'
-        label= 'Filter By'  
+        label='Filter By'  
       />
       <OptionSelection 
         actionType={ActionTypes.CHANGE_SORT} 
