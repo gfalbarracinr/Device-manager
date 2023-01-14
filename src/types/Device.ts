@@ -15,7 +15,7 @@ export default interface Device {
   type: DeviceType,
   hdd_capacity: number
 }
-
+export type DeviceWithoutId = Omit<Device, 'id'>;
 export enum DeviceSortBy {
   hdd_capacity = 'hdd_capacity',
   system_name = 'system_name'
