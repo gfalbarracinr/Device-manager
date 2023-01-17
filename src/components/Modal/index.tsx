@@ -2,12 +2,15 @@ import React from 'react'
 import { Input } from './Input'
 import { SelectInput } from './SelectInput'
 import Device, { DeviceType } from '../../types/Device'
+import { ModalFormContainer, ModalHeaderSection, ModalTitle, Button, SubmitButton, ButtonSection } from './style'
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 interface Props {
   onClose: () => void,
   onSubmit: (device: Omit<Device, 'id'> ) => void,
-  value?: Device
+  value?: Device,
+  modalType: 'Edit' | 'Add'
 }
-export const Modal = ({onClose, onSubmit, value}: Props) => {
+export const Modal = ({onClose, onSubmit, value, modalType}: Props) => {
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
@@ -23,12 +26,14 @@ export const Modal = ({onClose, onSubmit, value}: Props) => {
     onSubmit(device);
     onClose();
   }
-  console.log(value);
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Add Device</h1>
-      <button type='button' onClick={() => onClose()}>X</button>
-      <Input 
+    <ModalFormContainer onSubmit={handleSubmit}>
+      <ModalHeaderSection>
+        <ModalTitle>{`${modalType} Device`}</ModalTitle>
+        <Button type='button' onClick={() => onClose()}><AiOutlineCloseCircle/></Button>
+      </ModalHeaderSection>
+      <Input
         id='system_name'
         name='System Name'
         type='text'  
@@ -45,7 +50,9 @@ export const Modal = ({onClose, onSubmit, value}: Props) => {
         type='number'
         value={value?.hdd_capacity } 
       />
-      <button type='submit'>Submit </button>
-    </form>
+      <ButtonSection>
+          <SubmitButton type='submit'>{modalType}</SubmitButton>
+      </ButtonSection>
+    </ModalFormContainer>
   )
 }

@@ -42,7 +42,6 @@ describe('Menu testing', () => {
 
     const sortState = screen.getByTestId('sort-test');
     expect(sortState).toBeInTheDocument();
-    console.log(sortState)
     expect(sortState.innerHTML).toBe('HDD_CAPACITY');
 });
 

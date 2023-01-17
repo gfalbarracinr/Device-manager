@@ -7,6 +7,8 @@ import { Modal } from '../Modal';
 import { useFetch } from '../hooks/useFetch';
 import useDevice from '../../context/useDevice';
 import { sortDevicesByAttr } from '../../util';
+import { DeviceContainerArticle, FloatButton } from './style';
+import { CiCirclePlus } from 'react-icons/ci';
 
 const DeviceContainer = () => {
   const [devices, setDevices] = useState<Device[]>([]);
@@ -75,20 +77,22 @@ const DeviceContainer = () => {
   }, [filteredDevices, state.sort])
   return (
     <main>
-      <button type='button' onClick={() => { changeModal(true)}}>Add Device</button>
+      <FloatButton type='button' onClick={() => { changeModal(true)}}><CiCirclePlus/></FloatButton>
       { error !== null && <Error message={error} /> }
       { loading && <Loading /> }
-      { modal && <Modal onClose={() => changeModal(false)} onSubmit={addDevice} />}
-      {
-        sortDevices.map((device: Device) => (
-          <DeviceComponent 
-            key={device.id}
-            device={device}
-            onDelete={handleDelete}
-            onEdit={handleEdit}
-          />
-        ))
-      }
+      <DeviceContainerArticle>
+        {
+          sortDevices.map((device: Device) => (
+            <DeviceComponent 
+              key={device.id}
+              device={device}
+              onDelete={handleDelete}
+              onEdit={handleEdit}
+            />
+          ))
+        }
+        { modal && <Modal onClose={() => changeModal(false)} onSubmit={addDevice} modalType='Add'/>}
+      </DeviceContainerArticle>
     </main>
   )
 }
