@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+# Getting Started 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Instructions
+In order to run the project, make sure that the port in the env file is different than 3000 and the REACT_APP_API_URL variable is there pointing at the backend server, then run the backend and run the command `npm install`, finally run `npm run start`.
 
-## Available Scripts
+Once the project is running, you can add a new device by clicking the plus button in the right bottom corner, it will display a form in the position of the future device element. If you want to edit a device just click in the edit button (the button with the pencil icon) on the device element you want to be edited. Finally, if you want to delete a device, click in the trash icon in the device element you want to remove
 
-In the project directory, you can run:
+## Explanation
 
-### `npm start`
+### context
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I tried to make my solution very clean, so I decided to use context to handle the sate of the filter and sort inputs. the context contains two action `changeFilter` and `changeSort` that handles the respectiv state.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The sort state is a `DeviceSortType`, so it can be either `system_name` or `hdd_capacity`
 
-### `npm test`
+The filter state is a `DeviceType`, so it can be only the current DeviceTypes I have defined 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### fetching
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In terms of fetching I created a custom hook `useFetch`, this combined with the RestService/DeviceService handle all the Request logic.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The DeviceService is intended to manipulate the device request and handle it's response. It is responsible for making the transformation from JSON to device Type
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The RestService is intended to manipulate the HTTP Request, so it has a URL object with the back url path, there the fetch is perform with the `fetch` JS method
 
-### `npm run eject`
+The useFetch hook, is a flexible hook for all types of request that the app needs, also it has internal state for handling error and loading
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Styling
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The styling is very minimalitic but efficient I used Style-components to manipulate the syles, for the icons I used react-icons library.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Every styled-component element is defined in a separated file, for positioning I chose flex to align and manipulate elements. I also made the app responsive, so you can use from any device
