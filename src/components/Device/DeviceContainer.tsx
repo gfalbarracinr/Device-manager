@@ -77,7 +77,7 @@ const DeviceContainer = () => {
   }, [filteredDevices, state.sort])
   return (
     <main>
-      <FloatButton type='button' onClick={() => { changeModal(true)}}><CiCirclePlus/></FloatButton>
+      <FloatButton type='button' title='Add Device' onClick={() => { changeModal(true)}}><CiCirclePlus/></FloatButton>
       { error !== null && <Error message={error} /> }
       { loading && <Loading /> }
       <DeviceContainerArticle>

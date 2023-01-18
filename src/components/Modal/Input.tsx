@@ -11,7 +11,7 @@ export const Input = ({name, id, value, type}: Props) => {
   const [input, setInput] = useState<typeof value>(value);
   return (
     <InputSection>
-      <InputElement id={id} name={id} type={type} placeholder={name} value={input} onChange={(e) => {setInput(e.target.value)}} />
+      <InputElement id={id} name={id} type={type} placeholder={name} value={input} onChange={(e) => {setInput(e.target.value)}} required/>
     </InputSection>
   )
 }

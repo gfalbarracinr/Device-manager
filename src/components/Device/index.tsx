@@ -20,13 +20,13 @@ const DeviceComponent = ({device, onDelete, onEdit}: Props) => {
     <Fragment>
       { modal && <Modal onClose={() => setModal(false)} onSubmit={handleSubmit} value={device} modalType='Edit' />}
       { !modal && (
-      <DeviceComponentContainer>
+      <DeviceComponentContainer >
         <DeviceTitle>{device.system_name}</DeviceTitle> 
         <DeviceText>{device.type}</DeviceText>
         <DeviceText>Capacity: {device.hdd_capacity}</DeviceText>
         <ButtonContainer>
-          <Button type='button' onClick={() => onDelete(device.id)}><AiOutlineDelete/></Button>
-          <Button type='button' onClick={() => setModal(true)}><AiOutlineEdit/></Button>
+          <Button type='button' title='Remove Device' onClick={() => onDelete(device.id)}><AiOutlineDelete/></Button>
+          <Button type='button' title='Edit Device' onClick={() => setModal(true)}><AiOutlineEdit/></Button>
         </ButtonContainer>
       </DeviceComponentContainer>
       )}

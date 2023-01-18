@@ -51,7 +51,7 @@ export const Modal = ({onClose, onSubmit, value, modalType}: Props) => {
         value={value?.hdd_capacity } 
       />
       <ButtonSection>
-          <SubmitButton type='submit'>{modalType}</SubmitButton>
+          <SubmitButton type='submit' title='Create Device'>{modalType}</SubmitButton>
       </ButtonSection>
     </ModalFormContainer>
   )
