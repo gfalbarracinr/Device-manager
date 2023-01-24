@@ -82,22 +82,26 @@ const DeviceContainer = () => {
       { loading && <Loading /> }
       <TableDeviceSection>
       <DeviceTable>
+        <thead>
           <TableHeaderRow>
-            <TableHeader>Name</TableHeader>
-            <TableHeader>Type</TableHeader>
-            <TableHeader>Capacity</TableHeader>
-            <TableHeader></TableHeader>
+            <TableHeader>SYSTEM NAME</TableHeader>
+            <TableHeader>TYPE</TableHeader>
+            <TableHeader>HDD CAPACITY</TableHeader>
+            <TableHeader>OPTIONS</TableHeader>
           </TableHeaderRow>
-        {
-          sortDevices.map((device: Device) => (
-            <DeviceComponent 
-              key={device.id}
-              device={device}
-              onDelete={handleDelete}
-              onEdit={handleEdit}
-            />
-          ))
-        }
+        </thead>
+        <tbody>
+          {
+            sortDevices.map((device: Device) => (
+              <DeviceComponent 
+                key={device.id}
+                device={device}
+                onDelete={handleDelete}
+                onEdit={handleEdit}
+              />
+            ))
+          }
+        </tbody>
         { modal && <Modal onClose={() => changeModal(false)} onSubmit={addDevice} modalType='Add'/>}
       </DeviceTable>
       </TableDeviceSection>

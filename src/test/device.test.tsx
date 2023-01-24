@@ -19,6 +19,7 @@ describe('Device component', ()=> {
   beforeEach(() => {
     jest.spyOn(RestService, 'deleteDevice').mockImplementation(deleteDevice);
   })
+  
   afterEach(() => {
     jest.clearAllMocks();
   })

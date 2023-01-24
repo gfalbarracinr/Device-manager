@@ -24,7 +24,7 @@ export const Button = styled.button`
   color: black;
   cursor: pointer;
   &:hover {
-    color: red;
+    color: var(--purple);
   }
   & > svg {
     height: 20px;
@@ -78,7 +78,7 @@ export const FloatButton = styled.button`
     width: 40px;
 
   &:hover {
-   color: red;
+   color: var(--purple);
   }
   }
 `

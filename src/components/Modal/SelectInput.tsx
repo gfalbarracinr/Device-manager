@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { DeviceType } from '../../types/Device';
-import { Select } from './style';
+import { InputLabel, InputSection, Select } from './style';
 interface Props {
   id: string,
   value?: DeviceType,
@@ -13,7 +13,8 @@ export const SelectInput = ({id, value, name}: Props) => {
     setInput(type);
   }
   return (
-    <section >
+    <InputSection>
+      <InputLabel htmlFor={id}>{id.toUpperCase()}</InputLabel>
       <Select id={id} name={id} onChange={handleChange} defaultValue={input} placeholder='Type'>
         {
           Object.values(DeviceType).map((type) => (
@@ -21,6 +22,6 @@ export const SelectInput = ({id, value, name}: Props) => {
           ))
         }
       </Select>
-    </section>
+    </InputSection>
   )
 }
