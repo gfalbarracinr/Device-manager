@@ -7,7 +7,6 @@ test('title is there', () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-
 test('Logo is working', () => {
   render(<Header />);
   const linkElement = screen.getByAltText(/Ninja one logo/i);

@@ -4,7 +4,7 @@ interface Props {
   name: string;
   id: string;
   type: 'text' | 'number';
-  value?: string | number;
+  value: string | number;
 
 }
 export const Input = ({name, id, value, type}: Props) => {

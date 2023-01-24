@@ -33,6 +33,5 @@ describe('Device component', ()=> {
     await waitFor(() => expect(screen.queryByText('Loading ...')).toBe(null));
     const newDeleteButtons = screen.getAllByTitle('Remove Device');
     expect(newDeleteButtons.length).toBe(totalDevices - 1);
-    
   });
 })

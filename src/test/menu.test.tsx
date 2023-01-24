@@ -44,6 +44,5 @@ describe('Menu testing', () => {
     expect(sortState).toBeInTheDocument();
     expect(sortState.innerHTML).toBe('HDD_CAPACITY');
 });
-
 })
 

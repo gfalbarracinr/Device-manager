@@ -10,6 +10,7 @@ const createDevice = (name: string, capacity: number) => {
   }
   return newDevice;
 }
+
 describe('testing sorting function', () => {
   it('sort by name is working', () => {
     const devices = [createDevice('abc test', 123), createDevice('zbc test', 13), createDevice('mbc test', 1230)]
@@ -17,7 +18,7 @@ describe('testing sorting function', () => {
     expect(result.length).toBe(3);
     expect(result[0].system_name).toBe('abc test');
     expect(result[2].system_name).toBe('zbc test');
-  })
+  });
 
   it('sort by capacity is working', () => {
     const devices = [createDevice('abc test', 123), createDevice('zbc test', 13), createDevice('mbc test', 1230)]
@@ -25,5 +26,5 @@ describe('testing sorting function', () => {
     expect(result.length).toBe(3);
     expect(result[0].hdd_capacity).toBe(13);
     expect(result[2].hdd_capacity).toBe(1230);
-  })
-})
+  });
+});

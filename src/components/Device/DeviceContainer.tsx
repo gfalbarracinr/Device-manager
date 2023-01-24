@@ -8,7 +8,7 @@ import { useFetch } from '../hooks/useFetch';
 import useDevice from '../../context/useDevice';
 import { sortDevicesByAttr } from '../../util';
 import { DeviceContainerArticle, FloatButton } from './style';
-import { CiCirclePlus } from 'react-icons/ci';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 const DeviceContainer = () => {
   const [devices, setDevices] = useState<Device[]>([]);
@@ -77,7 +77,7 @@ const DeviceContainer = () => {
   }, [filteredDevices, state.sort])
   return (
     <main>
-      <FloatButton type='button' title='Add Device' onClick={() => { changeModal(true)}}><CiCirclePlus/></FloatButton>
+      <FloatButton type='button' title='Add Device' onClick={() => { changeModal(true)}}><AiOutlinePlusCircle/></FloatButton>
       { error !== null && <Error message={error} /> }
       { loading && <Loading /> }
       <DeviceContainerArticle>

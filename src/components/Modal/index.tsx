@@ -37,7 +37,7 @@ export const Modal = ({onClose, onSubmit, value, modalType}: Props) => {
         id='system_name'
         name='System Name'
         type='text'  
-        value={value?.system_name }
+        value={value?.system_name ?? '' }
       />
       <SelectInput 
         id='type'
@@ -48,7 +48,7 @@ export const Modal = ({onClose, onSubmit, value, modalType}: Props) => {
         id='hdd_capacity'
         name='HDD Capacity'
         type='number'
-        value={value?.hdd_capacity } 
+        value={value?.hdd_capacity ?? '' } 
       />
       <ButtonSection>
           <SubmitButton type='submit' title='Create Device'>{modalType}</SubmitButton>

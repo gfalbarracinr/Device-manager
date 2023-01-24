@@ -5,8 +5,9 @@ import * as RestService from '../services/RestService';
 import { getFakeDevices, createDevice } from "./util/Mock";
 import { Menu } from "../components/Menu";
 
+
 describe('Device component', ()=> {
-  const renderDeviceContainer = () => {
+  const renderDeviceContainerWithMenu = () => {
     return render(
       <DeviceProvider> 
         <>
@@ -14,36 +15,38 @@ describe('Device component', ()=> {
         <DeviceContainer />
         </>
       </DeviceProvider>
-    );
-  }
-  beforeEach(() => {
-    jest.spyOn(RestService, 'getDevices').mockImplementation(getFakeDevices);
-    jest.spyOn(RestService, 'postDevice').mockImplementation(createDevice);
-  })
-  afterEach(() => {
-    jest.clearAllMocks();
-  })
-  it('Loading before rendering devices', () => {
-    render(
+    )};
+  
+  const renderDeviceContainer = () => {
+    return render(
       <DeviceProvider>
         <DeviceContainer />
       </DeviceProvider>
-    )
-    const loading = screen.getByText('Loading ...');
-    expect(loading).toBeVisible();
-  })
+    )};
+
+  beforeEach(() => {
+    jest.spyOn(RestService, 'getDevices').mockImplementation(getFakeDevices);
+    jest.spyOn(RestService, 'postDevice').mockImplementation(createDevice);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('Loading before rendering devices', async() => {
+    renderDeviceContainer();
+    await screen.findByText('Loading ...');
+  });
+
   it('Renders all devices', async () => {
-    render(
-      <DeviceProvider> 
-        <DeviceContainer />
-      </DeviceProvider>
-    )
+    renderDeviceContainer();
     await waitFor(() => expect(screen.queryByText('Loading ...')).toBe(null));
     const devices = screen.getAllByRole('heading');
     expect(devices.length).toBe(3);
-  })
+  });
+
   it('Render and filter by MAC devices', async () => {
-    renderDeviceContainer();
+    renderDeviceContainerWithMenu();
     await waitFor(() => expect(screen.queryByText('Loading ...')).toBe(null));
     const filterElement = screen.getByLabelText(/Filter By/i);
     fireEvent.change(filterElement, { target: {value: 'MAC'}});
@@ -52,7 +55,7 @@ describe('Device component', ()=> {
   })
 
   it('Render and sort by capacity devices', async () => {
-    renderDeviceContainer();
+    renderDeviceContainerWithMenu();
     await waitFor(() => expect(screen.queryByText('Loading ...')).toBe(null));
     const sortElement = screen.getByLabelText(/Sort By/i);
     fireEvent.change(sortElement, { target: {value: 'HDD_CAPACITY'}});
@@ -64,9 +67,8 @@ describe('Device component', ()=> {
     expect(lastElement).toBe('MAC-LEADER');
   });
 
-
   it('Render and sort by name devices', async () => {
-    renderDeviceContainer();
+    renderDeviceContainerWithMenu();
     await waitFor(() => expect(screen.queryByText('Loading ...')).toBe(null));
     const sortElement = screen.getByLabelText(/Sort By/i);
     fireEvent.change(sortElement, { target: {value: 'SYSTEM_NAME'}});
@@ -78,9 +80,8 @@ describe('Device component', ()=> {
     expect(lastElement).toBe('MAC-LEADER');
   });
 
-
   it('Create new Device: Modal is displayed', async () => {
-    renderDeviceContainer();
+    renderDeviceContainerWithMenu();
     await waitFor(() => expect(screen.queryByText('Loading ...')).toBe(null));
     const addElement = screen.getByTitle(/Add Device/i);
     fireEvent.click(addElement);
