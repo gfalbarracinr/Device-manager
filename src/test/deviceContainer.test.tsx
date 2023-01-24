@@ -52,7 +52,7 @@ describe('Device component', ()=> {
     fireEvent.change(filterElement, { target: {value: 'MAC'}});
     const devices = screen.getAllByRole('heading');
     expect(devices.length).toBe(1);
-  })
+  });
 
   it('Render and sort by capacity devices', async () => {
     renderDeviceContainerWithMenu();

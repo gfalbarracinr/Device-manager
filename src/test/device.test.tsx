@@ -18,11 +18,11 @@ describe('Device component', ()=> {
   }
   beforeEach(() => {
     jest.spyOn(RestService, 'deleteDevice').mockImplementation(deleteDevice);
-  })
-  
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
-  })
+  });
 
   it('Delete Device: device erased', async () => {
     renderDeviceContainer();

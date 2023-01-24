@@ -13,7 +13,7 @@ describe('Menu testing', () => {
       </DeviceProvider>
       );
   }
-  test('Sorting and filtering option are displayed', () => {
+  it('Sorting and filtering option are displayed', () => {
     render(
       <DeviceProvider>
         <Menu />
@@ -25,7 +25,7 @@ describe('Menu testing', () => {
     expect(filterElement).toBeInTheDocument();
   });
 
-  test('Filter change is changing the state', () => {
+  it('Filter change is changing the state', () => {
       menuWithContext();
       const filterElement = screen.getByLabelText(/Filter By/i);
       fireEvent.change(filterElement, { target: {value: 'MAC'}});
@@ -35,7 +35,7 @@ describe('Menu testing', () => {
       expect(filterstate.innerHTML).toBe('MAC');
   });
 
-  test('Sort change is changing the state', () => {
+  it('Sort change is changing the state', () => {
     menuWithContext();
     const sortElement = screen.getByLabelText(/Sort By/i);
     fireEvent.change(sortElement, {target: {value: 'HDD_CAPACITY'}});

@@ -9,7 +9,7 @@ const createDevice = (name: string, capacity: number) => {
     type: DeviceType.WINDOWS_SERVER
   }
   return newDevice;
-}
+};
 
 describe('testing sorting function', () => {
   it('sort by name is working', () => {
@@ -19,7 +19,6 @@ describe('testing sorting function', () => {
     expect(result[0].system_name).toBe('abc test');
     expect(result[2].system_name).toBe('zbc test');
   });
-
   it('sort by capacity is working', () => {
     const devices = [createDevice('abc test', 123), createDevice('zbc test', 13), createDevice('mbc test', 1230)]
     const result = sortDevicesByAttr(devices, DeviceSortBy.hdd_capacity);

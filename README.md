@@ -30,4 +30,10 @@ The useFetch hook, is a flexible hook for all types of request that the app need
 
 The styling is very minimalitic but efficient I used Style-components to manipulate the syles, for the icons I used react-icons library.
 
-Every styled-component element is defined in a separated file, for positioning I chose flex to align and manipulate elements. I also made the app responsive, so you can use from any device
+Every styled-component element is defined in a separated file, for positioning I chose flex to align and manipulate elements.
+
+
+## Other fixes
+
+I change some tests that were falling and fix a warning about form input by always defining a value in the input, otherwise it will trigger a problem because the component start jumping tfrom control to uncontroll component
+
