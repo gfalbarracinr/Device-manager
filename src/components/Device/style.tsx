@@ -1,9 +1,6 @@
 import styled from 'styled-components';
-export const DeviceComponentContainer = styled.section`
+export const DeviceRow = styled.tr`
   border: 1px solid black;
-  width: 250px;
-  max-wiidth: 250px;
-  height: 100px;
   padding: 20px;
   text-align: center;
   margin-bottom: 30px;
@@ -11,6 +8,7 @@ export const DeviceComponentContainer = styled.section`
 
 export const DeviceTitle = styled.h1`
   font-weight: 400;
+  font-size: 14px;
 `;
 
 export const DeviceText = styled.p`
@@ -18,8 +16,7 @@ export const DeviceText = styled.p`
 `;
 
 export const ButtonContainer = styled.section`
-  display: flex;
-  justify-content: space-between;
+
 `;
 export const Button = styled.button`
   border: none;
@@ -35,12 +32,39 @@ export const Button = styled.button`
   }
 `;
 
-export const DeviceContainerArticle = styled.article`
-  display: flex;
-  flex-wrap: wrap;
+export const DeviceTable = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin: auto;
+  border: .1rem solid #999;
   padding: 40px;
-  justify-content: space-evenly;
 `;
+
+export const TableHeaderRow = styled.tr`
+  text-align: left;
+  width: 100%;
+  justify-content: space-around;
+  padding: 8px;
+`;
+
+export const TableHeader = styled.th`
+  text-align: left;
+  border: .1rem solid #999;
+  padding: .2em;
+  background-color: var(--darkBlue);
+  color: white;
+`;
+
+export const TableData = styled.td`
+  text-align: left;
+  border: .1rem solid #999;
+  padding: .2em;
+`;
+
+export const TableDeviceSection = styled.section`
+  padding: 40px;
+`
 
 export const FloatButton = styled.button`
   border-radius: 50%;

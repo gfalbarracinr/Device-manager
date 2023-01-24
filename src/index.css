@@ -4,6 +4,7 @@
 }
 :root {
   --black: rgba(66, 63, 63, 0.534);
+  --darkBlue: #2b3749;
 }
 body {
   margin: 0;

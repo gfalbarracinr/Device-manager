@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react'
 import Device from '../../types/Device'
 import { Modal } from '../Modal';
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
-import { DeviceComponentContainer, DeviceTitle, DeviceText, Button, ButtonContainer } from './style';
+import { DeviceRow, DeviceTitle, DeviceText, Button, ButtonContainer, TableData } from './style';
 
 interface Props {
   device: Device,
@@ -20,15 +20,23 @@ const DeviceComponent = ({device, onDelete, onEdit}: Props) => {
     <Fragment>
       { modal && <Modal onClose={() => setModal(false)} onSubmit={handleSubmit} value={device} modalType='Edit' />}
       { !modal && (
-      <DeviceComponentContainer >
-        <DeviceTitle>{device.system_name}</DeviceTitle> 
-        <DeviceText>{device.type}</DeviceText>
-        <DeviceText>Capacity: {device.hdd_capacity}</DeviceText>
-        <ButtonContainer>
-          <Button type='button' title='Remove Device' onClick={() => onDelete(device.id)}><AiOutlineDelete/></Button>
-          <Button type='button' title='Edit Device' onClick={() => setModal(true)}><AiOutlineEdit/></Button>
-        </ButtonContainer>
-      </DeviceComponentContainer>
+      <DeviceRow>
+        <TableData>
+          <DeviceTitle>{device.system_name}</DeviceTitle>
+        </TableData>
+        <TableData>
+          <DeviceText>{device.type}</DeviceText>
+        </TableData>
+        <TableData>
+          <DeviceText>{device.hdd_capacity}</DeviceText>
+        </TableData>
+        <TableData>
+          <ButtonContainer>
+            <Button type='button' title='Edit Device' onClick={() => setModal(true)}><AiOutlineEdit/></Button>
+            <Button type='button' title='Remove Device' onClick={() => onDelete(device.id)}><AiOutlineDelete/></Button>
+          </ButtonContainer>
+        </TableData>
+      </DeviceRow>
       )}
     </Fragment>
   )

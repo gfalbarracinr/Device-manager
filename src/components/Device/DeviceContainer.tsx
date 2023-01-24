@@ -7,7 +7,7 @@ import { Modal } from '../Modal';
 import { useFetch } from '../hooks/useFetch';
 import useDevice from '../../context/useDevice';
 import { sortDevicesByAttr } from '../../util';
-import { DeviceContainerArticle, FloatButton } from './style';
+import { DeviceTable, FloatButton, TableDeviceSection, TableHeader, TableHeaderRow } from './style';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 
 const DeviceContainer = () => {
@@ -80,7 +80,14 @@ const DeviceContainer = () => {
       <FloatButton type='button' title='Add Device' onClick={() => { changeModal(true)}}><AiOutlinePlusCircle/></FloatButton>
       { error !== null && <Error message={error} /> }
       { loading && <Loading /> }
-      <DeviceContainerArticle>
+      <TableDeviceSection>
+      <DeviceTable>
+          <TableHeaderRow>
+            <TableHeader>Name</TableHeader>
+            <TableHeader>Type</TableHeader>
+            <TableHeader>Capacity</TableHeader>
+            <TableHeader></TableHeader>
+          </TableHeaderRow>
         {
           sortDevices.map((device: Device) => (
             <DeviceComponent 
@@ -92,7 +99,8 @@ const DeviceContainer = () => {
           ))
         }
         { modal && <Modal onClose={() => changeModal(false)} onSubmit={addDevice} modalType='Add'/>}
-      </DeviceContainerArticle>
+      </DeviceTable>
+      </TableDeviceSection>
     </main>
   )
 }

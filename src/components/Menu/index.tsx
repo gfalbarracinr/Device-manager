@@ -1,11 +1,11 @@
 import { OptionSelection } from '../Select'
 import { ActionTypes } from '../../context/actionType';
 import { DeviceSortBy, DeviceType } from '../../types/Device';
-import './menu.css';
+import { OptionForm } from './style';
 
 export const Menu = () => {
   return (
-    <form className='options-container'>
+    <OptionForm>
       <OptionSelection 
         actionType={ActionTypes.CHANGE_FILTER} 
         options={DeviceType} 
@@ -18,6 +18,6 @@ export const Menu = () => {
         id='sort'
         label='Sort By'
       />
-    </form>
+    </OptionForm>
   )
 }
